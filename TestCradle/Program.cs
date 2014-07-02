@@ -18,12 +18,12 @@ namespace TestCradle
         {
             for(int i = 0; i < int.MaxValue; i++)
             {
-                testScript();
+                TestScript();
             }
             
         }
 
-        public static void testScript()
+        public static void TestScript()
         {
             Facade facadeObj = new Facade();
             // 0 mike, 1 kevin, 2 jwagner, 3 mobile, 4 mobile2
