@@ -1,0 +1,2715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://com.itraycer.mts/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://com.itraycer.mts/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://com.itraycer.mts/">
+      <s:element name="HasLoggedInOrOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="LoggedIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="LoggedOut" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasLoggedInOrOutResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDocPrefsFromDump">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DocName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocSpecialty" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="DocHospital" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDocPrefsFromDumpResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDocPrefsFromDumpResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateScheduleRevenue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pBeginDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pEndDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCaseType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CalculateScheduleRevenueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CalculateScheduleRevenueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckRecalls">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckRecallsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckRecallsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecallAlertData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRecallAlertDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRecallAlertDataResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRecallStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTracking" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateRecallStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateRecallStatusResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertChatMessage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepIDFrom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepIDTo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertChatMessageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertChatMessageResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoIDandRepID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pPasscode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCoIDandRepIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCoIDandRepIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationsByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLocationsByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLocationsByCompanyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessBarCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pImageFromDeviceArray" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProcessBarCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProcessBarCodeResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PurgeInSurgery">
+        <s:complexType />
+      </s:element>
+      <s:element name="PurgeInSurgeryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeInSurgeryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveSurgerySchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pTray" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pSurgeon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pHospital" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPatientID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pSurgeryType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNotes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveSurgeryScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveSurgeryScheduleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSurgerySchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pScheduleID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTray" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pSurgeon" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pHospital" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPatientID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pSurgeryType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNotes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateSurgeryScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateSurgeryScheduleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSurgerySchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pScheduleID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSurgeryScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteSurgeryScheduleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSurgerySchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pEventID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSurgeryScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSurgeryScheduleResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomTrays">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pManufacturer" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="trayType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomTraysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveRandomTraysResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTrayTypesByCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllTrayTypesByCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllTrayTypesByCompanyResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomDevice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pManufacturer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="quan" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomDeviceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveRandomDeviceResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomBiologic">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pManufacturer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pExpirationDate" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="quan" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pDeviceID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomBiologicResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveRandomBiologicResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTrayNotes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNotes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertTrayNotesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertTrayNotesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartDescription" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="quan" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="pExp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveRandomInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveRandomInventoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNews">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNewsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNewsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertValues">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAlertValuesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAlertValuesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRevenue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRevenueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRevenueResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressByCoordinatesForPhone">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="lat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="lon" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAddressByCoordinatesForPhoneResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAddressByCoordinatesForPhoneResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChatMessages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="repIDTo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="repIDFrom" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CoID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetChatMessagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetChatMessagesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnChatReps">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="repID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="coID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnChatRepsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnChatRepsResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddInventoryByTrayLotPart">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pEventID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pLat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="pLong" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddInventoryByTrayLotPartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddInventoryByTrayLotPartResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeInventory">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isDevice" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pEventID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Quan" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pPrice" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPatient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isImplant" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeInventoryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeInventoryResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeInventoryEncrypt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="isDevice" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPartNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pEventID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Quan" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="pPrice" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="pPatient" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isImplant" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PurgeInventoryEncryptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PurgeInventoryEncryptResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLoanerShipInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrackNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pNotes" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertLoanerShipInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertLoanerShipInfoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllManufactures">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AllManufacturesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AllManufacturesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZonesByRepID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZonesByRepIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZonesByRepIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidatePasscode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pPasscode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pEmail" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ValidatePasscodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ValidatePasscodeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartNumbersByRepID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pIsSuper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCaseID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pZoneID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPartNumbersByRepIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPartNumbersByRepIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTraysByLotOrPartNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isSuper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pZoneID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTraysByLotOrPartNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTraysByLotOrPartNumberResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTraysByLotOrPartNumberEncrypt">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isSuper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pLotNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTraysByLotOrPartNumberEncryptResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTraysByLotOrPartNumberEncryptResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertInstrumentUsageCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayInfo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertInstrumentUsageCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertInstrumentUsageCountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurgedPartNumbersByRepID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isSuper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPurgedPartNumbersByRepIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPurgedPartNumbersByRepIDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="HasRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="HasRequestResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayID" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MakeRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MakeRequestResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnRepName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnRepNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnRepNameResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetInventoryByRadiusAndParams">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="company_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="rep_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="vlat" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="vlon" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="radius" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="searchText" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="searchType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pZoneIDs" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CoreInfo" abstract="true">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreatedDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModifiedBy" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ModifiedDate" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="LotInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CoreInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="LotNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PartNumber" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="RepId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="RepName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PurgeStatus" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="LotStatusDesc" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LotClass" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Amount" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TrayId" nillable="true" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="ExpirationDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="FdsStatusName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FdaStatusId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Tracking" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="LocationInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CoreInfo">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="LocationID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="LocationName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LocationType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="LocationRank" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Latitude" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Longitude" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="HospitalId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TrayInfo">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:CoreInfo">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TrayLocation" type="tns:LocationInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="SubStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Lots" type="tns:ArrayOfLotInfo" />
+              <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="TrayID" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayCurrentHolder" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayWorkType" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayStatusDescr" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="TrayReceiptDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="TrayHandoverDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="TrayStatus" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ManufacturerId" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="PurgeStatus" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RepId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="RepName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="FedexTrackingNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayBarcodeID" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TrayClass" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IssueTypeId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="IssueType" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="LastServiceDate" nillable="true" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="Notes" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="DistanceInMiles" type="s:decimal" />
+              <s:element minOccurs="0" maxOccurs="1" name="Traytypecd" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="WorkflowStatus" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UnitNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Distributor" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfLotInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LotInfo" nillable="true" type="tns:LotInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrayInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrayInfo" nillable="true" type="tns:TrayInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetInventoryByRadiusAndParamsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetInventoryByRadiusAndParamsResult" type="tns:ArrayOfTrayInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiverManagerGetScannedTrays">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReceiverManagerGetScannedTraysResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReceiverManagerGetScannedTraysResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrayderRequests">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="isMine" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrayderObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LocationInfo" type="tns:LocationInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="ID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayDataInfo" type="tns:TrayInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="Requestor" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Requestee" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsApproved" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTrayderObject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TrayderObject" nillable="true" type="tns:TrayderObject" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTrayderRequestsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrayderRequestsResult" type="tns:ArrayOfTrayderObject" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrayderAgree">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="pYesNo" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="pTrayderID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TrayderAgreeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TrayderAgreeResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrayDataByRepID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="pRepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pCoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="isSuper" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pZoneID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrayDataByRepIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrayDataByRepIDResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TEST">
+        <s:complexType />
+      </s:element>
+      <s:element name="TESTResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="RetrieveLoanerTrayList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RetrieveLoanerTrayListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RetrieveLoanerTrayListResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDoctors">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CoID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDoctorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDoctorsResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetShippingAddressByRepAndCo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompoundAddressEmail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AddressList" type="tns:ArrayOfReplenishAddress" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailList" type="tns:ArrayOfReplenishEmail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReplenishAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplenishAddress" nillable="true" type="tns:ReplenishAddress" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReplenishAddress">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MAddressID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MEmails" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="MAttnTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MState" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MZip" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReplenishEmail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReplenishEmail" nillable="true" type="tns:ReplenishEmail" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReplenishEmail">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetShippingAddressByRepAndCoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetShippingAddressByRepAndCoResult" type="tns:CompoundAddressEmail" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSurgeryTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CoID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RepID" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CompoundNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CaseNameTypeList" type="tns:ArrayOfCaseNameType" />
+          <s:element minOccurs="0" maxOccurs="1" name="CaseTypeValuesList" type="tns:ArrayOfCaseTypeValues" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCaseNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CaseNameType" nillable="true" type="tns:CaseNameType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CaseNameType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CaseName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CaseId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCaseTypeValues">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CaseTypeValues" nillable="true" type="tns:CaseTypeValues" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CaseTypeValues">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CaseId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LevelList" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="ShowThird" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSurgeryTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSurgeryTypesResult" type="tns:CompoundNameType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTrayByEntity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="TE" type="tns:TrayEntity" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrayEntity">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="BarcodeID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoordsLatitude" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrayID1" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CoordsLongitude" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FedexTrackingNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ManufID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rep" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayCurrentHolder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayHandoverDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayReceiptDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayStatus" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TrayWorkType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="KitID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="_kitID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="UpdateTrayByEntityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateTrayByEntityResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HasLoggedInOrOutSoapIn">
+    <wsdl:part name="parameters" element="tns:HasLoggedInOrOut" />
+  </wsdl:message>
+  <wsdl:message name="HasLoggedInOrOutSoapOut">
+    <wsdl:part name="parameters" element="tns:HasLoggedInOrOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDocPrefsFromDumpSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDocPrefsFromDump" />
+  </wsdl:message>
+  <wsdl:message name="GetDocPrefsFromDumpSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDocPrefsFromDumpResponse" />
+  </wsdl:message>
+  <wsdl:message name="CalculateScheduleRevenueSoapIn">
+    <wsdl:part name="parameters" element="tns:CalculateScheduleRevenue" />
+  </wsdl:message>
+  <wsdl:message name="CalculateScheduleRevenueSoapOut">
+    <wsdl:part name="parameters" element="tns:CalculateScheduleRevenueResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckRecallsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckRecalls" />
+  </wsdl:message>
+  <wsdl:message name="CheckRecallsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckRecallsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRecallAlertDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRecallAlertData" />
+  </wsdl:message>
+  <wsdl:message name="GetRecallAlertDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRecallAlertDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRecallStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateRecallStatus" />
+  </wsdl:message>
+  <wsdl:message name="UpdateRecallStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateRecallStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertChatMessageSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertChatMessage" />
+  </wsdl:message>
+  <wsdl:message name="InsertChatMessageSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertChatMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoIDandRepIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCoIDandRepID" />
+  </wsdl:message>
+  <wsdl:message name="GetCoIDandRepIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCoIDandRepIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationsByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetLocationsByCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetLocationsByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetLocationsByCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBarCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ProcessBarCode" />
+  </wsdl:message>
+  <wsdl:message name="ProcessBarCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ProcessBarCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeInSurgerySoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeInSurgery" />
+  </wsdl:message>
+  <wsdl:message name="PurgeInSurgerySoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeInSurgeryResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveSurgeryScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveSurgerySchedule" />
+  </wsdl:message>
+  <wsdl:message name="SaveSurgeryScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveSurgeryScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSurgeryScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateSurgerySchedule" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSurgeryScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateSurgeryScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSurgeryScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSurgerySchedule" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSurgeryScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSurgeryScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSurgeryScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSurgerySchedule" />
+  </wsdl:message>
+  <wsdl:message name="GetSurgeryScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSurgeryScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomTraysSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRandomTrays" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomTraysSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRandomTraysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTrayTypesByCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllTrayTypesByCompany" />
+  </wsdl:message>
+  <wsdl:message name="GetAllTrayTypesByCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllTrayTypesByCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomDeviceSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRandomDevice" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomDeviceSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRandomDeviceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomBiologicSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRandomBiologic" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomBiologicSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRandomBiologicResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertTrayNotesSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertTrayNotes" />
+  </wsdl:message>
+  <wsdl:message name="InsertTrayNotesSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertTrayNotesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:SaveRandomInventory" />
+  </wsdl:message>
+  <wsdl:message name="SaveRandomInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:SaveRandomInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNews" />
+  </wsdl:message>
+  <wsdl:message name="GetNewsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertValuesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAlertValues" />
+  </wsdl:message>
+  <wsdl:message name="GetAlertValuesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAlertValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRevenueSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRevenue" />
+  </wsdl:message>
+  <wsdl:message name="GetRevenueSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRevenueResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCoordinatesForPhoneSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAddressByCoordinatesForPhone" />
+  </wsdl:message>
+  <wsdl:message name="GetAddressByCoordinatesForPhoneSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAddressByCoordinatesForPhoneResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetChatMessagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetChatMessages" />
+  </wsdl:message>
+  <wsdl:message name="GetChatMessagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetChatMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnChatRepsSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnChatReps" />
+  </wsdl:message>
+  <wsdl:message name="ReturnChatRepsSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnChatRepsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddInventoryByTrayLotPartSoapIn">
+    <wsdl:part name="parameters" element="tns:AddInventoryByTrayLotPart" />
+  </wsdl:message>
+  <wsdl:message name="AddInventoryByTrayLotPartSoapOut">
+    <wsdl:part name="parameters" element="tns:AddInventoryByTrayLotPartResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeInventorySoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeInventory" />
+  </wsdl:message>
+  <wsdl:message name="PurgeInventorySoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeInventoryResponse" />
+  </wsdl:message>
+  <wsdl:message name="PurgeInventoryEncryptSoapIn">
+    <wsdl:part name="parameters" element="tns:PurgeInventoryEncrypt" />
+  </wsdl:message>
+  <wsdl:message name="PurgeInventoryEncryptSoapOut">
+    <wsdl:part name="parameters" element="tns:PurgeInventoryEncryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertLoanerShipInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertLoanerShipInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsertLoanerShipInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertLoanerShipInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="AllManufacturesSoapIn">
+    <wsdl:part name="parameters" element="tns:AllManufactures" />
+  </wsdl:message>
+  <wsdl:message name="AllManufacturesSoapOut">
+    <wsdl:part name="parameters" element="tns:AllManufacturesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetZonesByRepIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZonesByRepID" />
+  </wsdl:message>
+  <wsdl:message name="GetZonesByRepIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZonesByRepIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ValidatePasscodeSoapIn">
+    <wsdl:part name="parameters" element="tns:ValidatePasscode" />
+  </wsdl:message>
+  <wsdl:message name="ValidatePasscodeSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidatePasscodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPartNumbersByRepIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPartNumbersByRepID" />
+  </wsdl:message>
+  <wsdl:message name="GetPartNumbersByRepIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPartNumbersByRepIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTraysByLotOrPartNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTraysByLotOrPartNumber" />
+  </wsdl:message>
+  <wsdl:message name="GetTraysByLotOrPartNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTraysByLotOrPartNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTraysByLotOrPartNumberEncryptSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTraysByLotOrPartNumberEncrypt" />
+  </wsdl:message>
+  <wsdl:message name="GetTraysByLotOrPartNumberEncryptSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTraysByLotOrPartNumberEncryptResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertInstrumentUsageCountSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertInstrumentUsageCount" />
+  </wsdl:message>
+  <wsdl:message name="InsertInstrumentUsageCountSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertInstrumentUsageCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPurgedPartNumbersByRepIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPurgedPartNumbersByRepID" />
+  </wsdl:message>
+  <wsdl:message name="GetPurgedPartNumbersByRepIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPurgedPartNumbersByRepIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="HasRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:HasRequest" />
+  </wsdl:message>
+  <wsdl:message name="HasRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:HasRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeRequest" />
+  </wsdl:message>
+  <wsdl:message name="MakeRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReturnRepNameSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnRepName" />
+  </wsdl:message>
+  <wsdl:message name="ReturnRepNameSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnRepNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetInventoryByRadiusAndParamsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetInventoryByRadiusAndParams" />
+  </wsdl:message>
+  <wsdl:message name="GetInventoryByRadiusAndParamsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetInventoryByRadiusAndParamsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReceiverManagerGetScannedTraysSoapIn">
+    <wsdl:part name="parameters" element="tns:ReceiverManagerGetScannedTrays" />
+  </wsdl:message>
+  <wsdl:message name="ReceiverManagerGetScannedTraysSoapOut">
+    <wsdl:part name="parameters" element="tns:ReceiverManagerGetScannedTraysResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrayderRequestsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrayderRequests" />
+  </wsdl:message>
+  <wsdl:message name="GetTrayderRequestsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrayderRequestsResponse" />
+  </wsdl:message>
+  <wsdl:message name="TrayderAgreeSoapIn">
+    <wsdl:part name="parameters" element="tns:TrayderAgree" />
+  </wsdl:message>
+  <wsdl:message name="TrayderAgreeSoapOut">
+    <wsdl:part name="parameters" element="tns:TrayderAgreeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrayDataByRepIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrayDataByRepID" />
+  </wsdl:message>
+  <wsdl:message name="GetTrayDataByRepIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrayDataByRepIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="TESTSoapIn">
+    <wsdl:part name="parameters" element="tns:TEST" />
+  </wsdl:message>
+  <wsdl:message name="TESTSoapOut">
+    <wsdl:part name="parameters" element="tns:TESTResponse" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveLoanerTrayListSoapIn">
+    <wsdl:part name="parameters" element="tns:RetrieveLoanerTrayList" />
+  </wsdl:message>
+  <wsdl:message name="RetrieveLoanerTrayListSoapOut">
+    <wsdl:part name="parameters" element="tns:RetrieveLoanerTrayListResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDoctorsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDoctors" />
+  </wsdl:message>
+  <wsdl:message name="GetDoctorsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDoctorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetShippingAddressByRepAndCoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetShippingAddressByRepAndCo" />
+  </wsdl:message>
+  <wsdl:message name="GetShippingAddressByRepAndCoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetShippingAddressByRepAndCoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSurgeryTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSurgeryTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetSurgeryTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSurgeryTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTrayByEntitySoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTrayByEntity" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTrayByEntitySoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTrayByEntityResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServicePeakSoap">
+    <wsdl:operation name="HasLoggedInOrOut">
+      <wsdl:input message="tns:HasLoggedInOrOutSoapIn" />
+      <wsdl:output message="tns:HasLoggedInOrOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocPrefsFromDump">
+      <wsdl:input message="tns:GetDocPrefsFromDumpSoapIn" />
+      <wsdl:output message="tns:GetDocPrefsFromDumpSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CalculateScheduleRevenue">
+      <wsdl:input message="tns:CalculateScheduleRevenueSoapIn" />
+      <wsdl:output message="tns:CalculateScheduleRevenueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckRecalls">
+      <wsdl:input message="tns:CheckRecallsSoapIn" />
+      <wsdl:output message="tns:CheckRecallsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecallAlertData">
+      <wsdl:input message="tns:GetRecallAlertDataSoapIn" />
+      <wsdl:output message="tns:GetRecallAlertDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecallStatus">
+      <wsdl:input message="tns:UpdateRecallStatusSoapIn" />
+      <wsdl:output message="tns:UpdateRecallStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertChatMessage">
+      <wsdl:input message="tns:InsertChatMessageSoapIn" />
+      <wsdl:output message="tns:InsertChatMessageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoIDandRepID">
+      <wsdl:input message="tns:GetCoIDandRepIDSoapIn" />
+      <wsdl:output message="tns:GetCoIDandRepIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByCompany">
+      <wsdl:input message="tns:GetLocationsByCompanySoapIn" />
+      <wsdl:output message="tns:GetLocationsByCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBarCode">
+      <wsdl:input message="tns:ProcessBarCodeSoapIn" />
+      <wsdl:output message="tns:ProcessBarCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInSurgery">
+      <wsdl:input message="tns:PurgeInSurgerySoapIn" />
+      <wsdl:output message="tns:PurgeInSurgerySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSurgerySchedule">
+      <wsdl:input message="tns:SaveSurgeryScheduleSoapIn" />
+      <wsdl:output message="tns:SaveSurgeryScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSurgerySchedule">
+      <wsdl:input message="tns:UpdateSurgeryScheduleSoapIn" />
+      <wsdl:output message="tns:UpdateSurgeryScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSurgerySchedule">
+      <wsdl:input message="tns:DeleteSurgeryScheduleSoapIn" />
+      <wsdl:output message="tns:DeleteSurgeryScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSurgerySchedule">
+      <wsdl:input message="tns:GetSurgeryScheduleSoapIn" />
+      <wsdl:output message="tns:GetSurgeryScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomTrays">
+      <wsdl:input message="tns:SaveRandomTraysSoapIn" />
+      <wsdl:output message="tns:SaveRandomTraysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTrayTypesByCompany">
+      <wsdl:input message="tns:GetAllTrayTypesByCompanySoapIn" />
+      <wsdl:output message="tns:GetAllTrayTypesByCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomDevice">
+      <wsdl:input message="tns:SaveRandomDeviceSoapIn" />
+      <wsdl:output message="tns:SaveRandomDeviceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomBiologic">
+      <wsdl:input message="tns:SaveRandomBiologicSoapIn" />
+      <wsdl:output message="tns:SaveRandomBiologicSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertTrayNotes">
+      <wsdl:input message="tns:InsertTrayNotesSoapIn" />
+      <wsdl:output message="tns:InsertTrayNotesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomInventory">
+      <wsdl:input message="tns:SaveRandomInventorySoapIn" />
+      <wsdl:output message="tns:SaveRandomInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <wsdl:input message="tns:GetNewsSoapIn" />
+      <wsdl:output message="tns:GetNewsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertValues">
+      <wsdl:input message="tns:GetAlertValuesSoapIn" />
+      <wsdl:output message="tns:GetAlertValuesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRevenue">
+      <wsdl:input message="tns:GetRevenueSoapIn" />
+      <wsdl:output message="tns:GetRevenueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCoordinatesForPhone">
+      <wsdl:input message="tns:GetAddressByCoordinatesForPhoneSoapIn" />
+      <wsdl:output message="tns:GetAddressByCoordinatesForPhoneSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChatMessages">
+      <wsdl:input message="tns:GetChatMessagesSoapIn" />
+      <wsdl:output message="tns:GetChatMessagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnChatReps">
+      <wsdl:input message="tns:ReturnChatRepsSoapIn" />
+      <wsdl:output message="tns:ReturnChatRepsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddInventoryByTrayLotPart">
+      <wsdl:input message="tns:AddInventoryByTrayLotPartSoapIn" />
+      <wsdl:output message="tns:AddInventoryByTrayLotPartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInventory">
+      <wsdl:input message="tns:PurgeInventorySoapIn" />
+      <wsdl:output message="tns:PurgeInventorySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInventoryEncrypt">
+      <wsdl:input message="tns:PurgeInventoryEncryptSoapIn" />
+      <wsdl:output message="tns:PurgeInventoryEncryptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertLoanerShipInfo">
+      <wsdl:input message="tns:InsertLoanerShipInfoSoapIn" />
+      <wsdl:output message="tns:InsertLoanerShipInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AllManufactures">
+      <wsdl:input message="tns:AllManufacturesSoapIn" />
+      <wsdl:output message="tns:AllManufacturesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZonesByRepID">
+      <wsdl:input message="tns:GetZonesByRepIDSoapIn" />
+      <wsdl:output message="tns:GetZonesByRepIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePasscode">
+      <wsdl:input message="tns:ValidatePasscodeSoapIn" />
+      <wsdl:output message="tns:ValidatePasscodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPartNumbersByRepID">
+      <wsdl:input message="tns:GetPartNumbersByRepIDSoapIn" />
+      <wsdl:output message="tns:GetPartNumbersByRepIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTraysByLotOrPartNumber">
+      <wsdl:input message="tns:GetTraysByLotOrPartNumberSoapIn" />
+      <wsdl:output message="tns:GetTraysByLotOrPartNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTraysByLotOrPartNumberEncrypt">
+      <wsdl:input message="tns:GetTraysByLotOrPartNumberEncryptSoapIn" />
+      <wsdl:output message="tns:GetTraysByLotOrPartNumberEncryptSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertInstrumentUsageCount">
+      <wsdl:input message="tns:InsertInstrumentUsageCountSoapIn" />
+      <wsdl:output message="tns:InsertInstrumentUsageCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPurgedPartNumbersByRepID">
+      <wsdl:input message="tns:GetPurgedPartNumbersByRepIDSoapIn" />
+      <wsdl:output message="tns:GetPurgedPartNumbersByRepIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="HasRequest">
+      <wsdl:input message="tns:HasRequestSoapIn" />
+      <wsdl:output message="tns:HasRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeRequest">
+      <wsdl:input message="tns:MakeRequestSoapIn" />
+      <wsdl:output message="tns:MakeRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnRepName">
+      <wsdl:input message="tns:ReturnRepNameSoapIn" />
+      <wsdl:output message="tns:ReturnRepNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryByRadiusAndParams">
+      <wsdl:input message="tns:GetInventoryByRadiusAndParamsSoapIn" />
+      <wsdl:output message="tns:GetInventoryByRadiusAndParamsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReceiverManagerGetScannedTrays">
+      <wsdl:input message="tns:ReceiverManagerGetScannedTraysSoapIn" />
+      <wsdl:output message="tns:ReceiverManagerGetScannedTraysSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayderRequests">
+      <wsdl:input message="tns:GetTrayderRequestsSoapIn" />
+      <wsdl:output message="tns:GetTrayderRequestsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TrayderAgree">
+      <wsdl:input message="tns:TrayderAgreeSoapIn" />
+      <wsdl:output message="tns:TrayderAgreeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayDataByRepID">
+      <wsdl:input message="tns:GetTrayDataByRepIDSoapIn" />
+      <wsdl:output message="tns:GetTrayDataByRepIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TEST">
+      <wsdl:input message="tns:TESTSoapIn" />
+      <wsdl:output message="tns:TESTSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveLoanerTrayList">
+      <wsdl:input message="tns:RetrieveLoanerTrayListSoapIn" />
+      <wsdl:output message="tns:RetrieveLoanerTrayListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <wsdl:input message="tns:GetDoctorsSoapIn" />
+      <wsdl:output message="tns:GetDoctorsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingAddressByRepAndCo">
+      <wsdl:input message="tns:GetShippingAddressByRepAndCoSoapIn" />
+      <wsdl:output message="tns:GetShippingAddressByRepAndCoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSurgeryTypes">
+      <wsdl:input message="tns:GetSurgeryTypesSoapIn" />
+      <wsdl:output message="tns:GetSurgeryTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrayByEntity">
+      <wsdl:input message="tns:UpdateTrayByEntitySoapIn" />
+      <wsdl:output message="tns:UpdateTrayByEntitySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicePeakSoap" type="tns:ServicePeakSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HasLoggedInOrOut">
+      <soap:operation soapAction="http://com.itraycer.mts/HasLoggedInOrOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocPrefsFromDump">
+      <soap:operation soapAction="http://com.itraycer.mts/GetDocPrefsFromDump" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateScheduleRevenue">
+      <soap:operation soapAction="http://com.itraycer.mts/CalculateScheduleRevenue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckRecalls">
+      <soap:operation soapAction="http://com.itraycer.mts/CheckRecalls" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecallAlertData">
+      <soap:operation soapAction="http://com.itraycer.mts/GetRecallAlertData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecallStatus">
+      <soap:operation soapAction="http://com.itraycer.mts/UpdateRecallStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertChatMessage">
+      <soap:operation soapAction="http://com.itraycer.mts/InsertChatMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoIDandRepID">
+      <soap:operation soapAction="http://com.itraycer.mts/GetCoIDandRepID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByCompany">
+      <soap:operation soapAction="http://com.itraycer.mts/GetLocationsByCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBarCode">
+      <soap:operation soapAction="http://com.itraycer.mts/ProcessBarCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInSurgery">
+      <soap:operation soapAction="http://com.itraycer.mts/PurgeInSurgery" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSurgerySchedule">
+      <soap:operation soapAction="http://com.itraycer.mts/SaveSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSurgerySchedule">
+      <soap:operation soapAction="http://com.itraycer.mts/UpdateSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSurgerySchedule">
+      <soap:operation soapAction="http://com.itraycer.mts/DeleteSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSurgerySchedule">
+      <soap:operation soapAction="http://com.itraycer.mts/GetSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomTrays">
+      <soap:operation soapAction="http://com.itraycer.mts/SaveRandomTrays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTrayTypesByCompany">
+      <soap:operation soapAction="http://com.itraycer.mts/GetAllTrayTypesByCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomDevice">
+      <soap:operation soapAction="http://com.itraycer.mts/SaveRandomDevice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomBiologic">
+      <soap:operation soapAction="http://com.itraycer.mts/SaveRandomBiologic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTrayNotes">
+      <soap:operation soapAction="http://com.itraycer.mts/InsertTrayNotes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomInventory">
+      <soap:operation soapAction="http://com.itraycer.mts/SaveRandomInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <soap:operation soapAction="http://com.itraycer.mts/GetNews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertValues">
+      <soap:operation soapAction="http://com.itraycer.mts/GetAlertValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRevenue">
+      <soap:operation soapAction="http://com.itraycer.mts/GetRevenue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCoordinatesForPhone">
+      <soap:operation soapAction="http://com.itraycer.mts/GetAddressByCoordinatesForPhone" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChatMessages">
+      <soap:operation soapAction="http://com.itraycer.mts/GetChatMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnChatReps">
+      <soap:operation soapAction="http://com.itraycer.mts/ReturnChatReps" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInventoryByTrayLotPart">
+      <soap:operation soapAction="http://com.itraycer.mts/AddInventoryByTrayLotPart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInventory">
+      <soap:operation soapAction="http://com.itraycer.mts/PurgeInventory" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInventoryEncrypt">
+      <soap:operation soapAction="http://com.itraycer.mts/PurgeInventoryEncrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLoanerShipInfo">
+      <soap:operation soapAction="http://com.itraycer.mts/InsertLoanerShipInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllManufactures">
+      <soap:operation soapAction="http://com.itraycer.mts/AllManufactures" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZonesByRepID">
+      <soap:operation soapAction="http://com.itraycer.mts/GetZonesByRepID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePasscode">
+      <soap:operation soapAction="http://com.itraycer.mts/ValidatePasscode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartNumbersByRepID">
+      <soap:operation soapAction="http://com.itraycer.mts/GetPartNumbersByRepID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTraysByLotOrPartNumber">
+      <soap:operation soapAction="http://com.itraycer.mts/GetTraysByLotOrPartNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTraysByLotOrPartNumberEncrypt">
+      <soap:operation soapAction="http://com.itraycer.mts/GetTraysByLotOrPartNumberEncrypt" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertInstrumentUsageCount">
+      <soap:operation soapAction="http://com.itraycer.mts/InsertInstrumentUsageCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurgedPartNumbersByRepID">
+      <soap:operation soapAction="http://com.itraycer.mts/GetPurgedPartNumbersByRepID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasRequest">
+      <soap:operation soapAction="http://com.itraycer.mts/HasRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeRequest">
+      <soap:operation soapAction="http://com.itraycer.mts/MakeRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnRepName">
+      <soap:operation soapAction="http://com.itraycer.mts/ReturnRepName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryByRadiusAndParams">
+      <soap:operation soapAction="http://com.itraycer.mts/GetInventoryByRadiusAndParams" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiverManagerGetScannedTrays">
+      <soap:operation soapAction="http://com.itraycer.mts/ReceiverManagerGetScannedTrays" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayderRequests">
+      <soap:operation soapAction="http://com.itraycer.mts/GetTrayderRequests" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrayderAgree">
+      <soap:operation soapAction="http://com.itraycer.mts/TrayderAgree" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayDataByRepID">
+      <soap:operation soapAction="http://com.itraycer.mts/GetTrayDataByRepID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEST">
+      <soap:operation soapAction="http://com.itraycer.mts/TEST" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveLoanerTrayList">
+      <soap:operation soapAction="http://com.itraycer.mts/RetrieveLoanerTrayList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <soap:operation soapAction="http://com.itraycer.mts/GetDoctors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingAddressByRepAndCo">
+      <soap:operation soapAction="http://com.itraycer.mts/GetShippingAddressByRepAndCo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSurgeryTypes">
+      <soap:operation soapAction="http://com.itraycer.mts/GetSurgeryTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrayByEntity">
+      <soap:operation soapAction="http://com.itraycer.mts/UpdateTrayByEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServicePeakSoap12" type="tns:ServicePeakSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HasLoggedInOrOut">
+      <soap12:operation soapAction="http://com.itraycer.mts/HasLoggedInOrOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDocPrefsFromDump">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetDocPrefsFromDump" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CalculateScheduleRevenue">
+      <soap12:operation soapAction="http://com.itraycer.mts/CalculateScheduleRevenue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckRecalls">
+      <soap12:operation soapAction="http://com.itraycer.mts/CheckRecalls" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRecallAlertData">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetRecallAlertData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateRecallStatus">
+      <soap12:operation soapAction="http://com.itraycer.mts/UpdateRecallStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertChatMessage">
+      <soap12:operation soapAction="http://com.itraycer.mts/InsertChatMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoIDandRepID">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetCoIDandRepID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLocationsByCompany">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetLocationsByCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessBarCode">
+      <soap12:operation soapAction="http://com.itraycer.mts/ProcessBarCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInSurgery">
+      <soap12:operation soapAction="http://com.itraycer.mts/PurgeInSurgery" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSurgerySchedule">
+      <soap12:operation soapAction="http://com.itraycer.mts/SaveSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSurgerySchedule">
+      <soap12:operation soapAction="http://com.itraycer.mts/UpdateSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSurgerySchedule">
+      <soap12:operation soapAction="http://com.itraycer.mts/DeleteSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSurgerySchedule">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetSurgerySchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomTrays">
+      <soap12:operation soapAction="http://com.itraycer.mts/SaveRandomTrays" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTrayTypesByCompany">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetAllTrayTypesByCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomDevice">
+      <soap12:operation soapAction="http://com.itraycer.mts/SaveRandomDevice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomBiologic">
+      <soap12:operation soapAction="http://com.itraycer.mts/SaveRandomBiologic" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertTrayNotes">
+      <soap12:operation soapAction="http://com.itraycer.mts/InsertTrayNotes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveRandomInventory">
+      <soap12:operation soapAction="http://com.itraycer.mts/SaveRandomInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNews">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetNews" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAlertValues">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetAlertValues" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRevenue">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetRevenue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAddressByCoordinatesForPhone">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetAddressByCoordinatesForPhone" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetChatMessages">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetChatMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnChatReps">
+      <soap12:operation soapAction="http://com.itraycer.mts/ReturnChatReps" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddInventoryByTrayLotPart">
+      <soap12:operation soapAction="http://com.itraycer.mts/AddInventoryByTrayLotPart" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInventory">
+      <soap12:operation soapAction="http://com.itraycer.mts/PurgeInventory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PurgeInventoryEncrypt">
+      <soap12:operation soapAction="http://com.itraycer.mts/PurgeInventoryEncrypt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertLoanerShipInfo">
+      <soap12:operation soapAction="http://com.itraycer.mts/InsertLoanerShipInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AllManufactures">
+      <soap12:operation soapAction="http://com.itraycer.mts/AllManufactures" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZonesByRepID">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetZonesByRepID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidatePasscode">
+      <soap12:operation soapAction="http://com.itraycer.mts/ValidatePasscode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPartNumbersByRepID">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetPartNumbersByRepID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTraysByLotOrPartNumber">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetTraysByLotOrPartNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTraysByLotOrPartNumberEncrypt">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetTraysByLotOrPartNumberEncrypt" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertInstrumentUsageCount">
+      <soap12:operation soapAction="http://com.itraycer.mts/InsertInstrumentUsageCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPurgedPartNumbersByRepID">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetPurgedPartNumbersByRepID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="HasRequest">
+      <soap12:operation soapAction="http://com.itraycer.mts/HasRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeRequest">
+      <soap12:operation soapAction="http://com.itraycer.mts/MakeRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnRepName">
+      <soap12:operation soapAction="http://com.itraycer.mts/ReturnRepName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInventoryByRadiusAndParams">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetInventoryByRadiusAndParams" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReceiverManagerGetScannedTrays">
+      <soap12:operation soapAction="http://com.itraycer.mts/ReceiverManagerGetScannedTrays" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayderRequests">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetTrayderRequests" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TrayderAgree">
+      <soap12:operation soapAction="http://com.itraycer.mts/TrayderAgree" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrayDataByRepID">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetTrayDataByRepID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TEST">
+      <soap12:operation soapAction="http://com.itraycer.mts/TEST" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveLoanerTrayList">
+      <soap12:operation soapAction="http://com.itraycer.mts/RetrieveLoanerTrayList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctors">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetDoctors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetShippingAddressByRepAndCo">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetShippingAddressByRepAndCo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSurgeryTypes">
+      <soap12:operation soapAction="http://com.itraycer.mts/GetSurgeryTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTrayByEntity">
+      <soap12:operation soapAction="http://com.itraycer.mts/UpdateTrayByEntity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicePeak">
+    <wsdl:port name="ServicePeakSoap" binding="tns:ServicePeakSoap">
+      <soap:address location="http://www.itraycer.com:12324/AlphaBravo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServicePeakSoap12" binding="tns:ServicePeakSoap12">
+      <soap12:address location="http://www.itraycer.com:12324/AlphaBravo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
