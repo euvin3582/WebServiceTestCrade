@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="http://www.itraycer.com:12324/MTSWebServices.asmx?wsdl" docRef="http://www.itraycer.com:12324/MTSWebServices.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="http://www.itraycer.com:12324/MTSWebServices.asmx" xmlns:q1="http://itraycer.org/" binding="q1:MTSWebServicesSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="http://www.itraycer.com:12324/MTSWebServices.asmx" xmlns:q2="http://itraycer.org/" binding="q2:MTSWebServicesSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-</discovery>

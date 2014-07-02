@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
-  <contractRef ref="http://www.itraycer.com:12324/AlphaBravo.asmx?wsdl" docRef="http://www.itraycer.com:12324/AlphaBravo.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
-  <soap address="http://www.itraycer.com:12324/AlphaBravo.asmx" xmlns:q1="http://com.itraycer.mts/" binding="q1:ServicePeakSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-  <soap address="http://www.itraycer.com:12324/AlphaBravo.asmx" xmlns:q2="http://com.itraycer.mts/" binding="q2:ServicePeakSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
-</discovery>
